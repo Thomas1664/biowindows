@@ -1,0 +1,9 @@
+name: biowindows
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - anaconda-client
+  - conda-build
