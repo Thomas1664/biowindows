@@ -28,9 +28,11 @@ jobs:
           conda install -y conda-build anaconda-client
 
       - name: Build all recipes
-        shell: cmd
+        shell: pwsh
         run: |
-          for /d %d in (recipes\*) do conda build "%d" --output-folder build_artifacts
+          Get-ChildItem recipes -Directory | ForEach-Object {
+              conda build $_.FullName --output-folder build_artifacts
+          }
 
       - name: Upload to Anaconda.org
         if: startsWith(github.ref, 'refs/heads/main')
