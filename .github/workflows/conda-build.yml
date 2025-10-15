@@ -40,4 +40,4 @@ jobs:
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
-          anaconda upload build_artifacts\**\*.tar.bz2 --user <username> --label main
+          anaconda upload build_artifacts\**\*.tar.bz2 --user biowindows --label main
