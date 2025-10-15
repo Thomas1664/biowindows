@@ -23,7 +23,7 @@ jobs:
           use-mamba: true
 
       - name: Install dependencies
-        shell: cmd
+        shell: pwsh
         run: |
           conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
 
@@ -36,8 +36,10 @@ jobs:
 
       - name: Upload to Anaconda.org
         if: startsWith(github.ref, 'refs/heads/main')
-        shell: cmd
+        shell: pwsh
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
-          anaconda upload build_artifacts\**\*.tar.bz2 --user biowindows --label main
+          Get-ChildItem build_artifacts -Recurse -Filter *.tar.bz2 | ForEach-Object {
+              anaconda upload $_.FullName --user biowindows --label main
+          }
