@@ -23,7 +23,7 @@ jobs:
           use-mamba: true
 
       - name: Install dependencies
-        shell: pwsh
+        shell: cmd
         run: |
           conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
 
