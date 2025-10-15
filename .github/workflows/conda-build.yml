@@ -28,11 +28,9 @@ jobs:
           conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
 
       - name: Build all recipes
-        shell: pwsh
+        shell: cmd
         run: |
-          Get-ChildItem recipes -Directory | ForEach-Object {
-              conda build $_.FullName --output-folder build_artifacts --no-test --no-build-id
-          }
+          for /d %%d in (recipes\*) do conda build "%%d" --output-folder build_artifacts --no-test --no-build-id
 
       - name: Upload to Anaconda.org
         if: startsWith(github.ref, 'refs/heads/main')
