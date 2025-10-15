@@ -31,7 +31,7 @@ jobs:
         shell: pwsh
         run: |
           Get-ChildItem recipes -Directory | ForEach-Object {
-              conda build $_.FullName --output-folder build_artifacts
+              conda build $_.FullName --output-folder build_artifacts --no-test --no-build-id
           }
 
       - name: Upload to Anaconda.org
