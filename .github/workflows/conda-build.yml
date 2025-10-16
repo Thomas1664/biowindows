@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: cmd /C CALL
+        shell: cmd
 
     steps:
       - name: 🧾 Checkout repository
