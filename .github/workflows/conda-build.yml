@@ -21,8 +21,10 @@ jobs:
         with:
           activate-environment: biowindows
           environment-file: environment.yml
+      - name: Test conda setup
         run: >-
           conda info && conda list
+      
       # - name: 🧪 Create build environment
       #   run: |
       #     conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
