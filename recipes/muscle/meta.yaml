@@ -4,7 +4,7 @@ package:
 
 build:
   number: 0
-  script: bld.bat
+  script: bld.ps1
 
 about:
   home: https://drive5.com/muscle
