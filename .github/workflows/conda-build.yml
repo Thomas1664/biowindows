@@ -1,43 +1,28 @@
-name: Build and Upload Conda Package
+name: Build and upload conda packages
 
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: Build Conda Package
+  conda_deployment:
+    name: Conda deployment
     runs-on: windows-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Set up Miniconda
+      - name: Conda environment creation and activation
         uses: conda-incubator/setup-miniconda@v3
         with:
-          miniconda-version: "latest"
-          auto-update-conda: true
-          activate-environment: build-env
-          python-version: "3.13"
-          use-mamba: true
-
-      - name: Install dependencies
-        shell: cmd
-        run: |
-          conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
-
-      - name: Build all recipes
-        shell: cmd
-        run: |
-          for /d %%d in (recipes\*) do conda build "%%d" --output-folder build_artifacts --no-test --no-build-id
-
-      - name: Upload to Anaconda.org
-        if: startsWith(github.ref, 'refs/heads/main')
-        shell: pwsh
-        env:
-          ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
-        run: |
-          Get-ChildItem build_artifacts -Recurse -Filter *.tar.bz2 | ForEach-Object {
-              anaconda upload $_.FullName --user biowindows --label main
-          }
+          python-version: 3.11
+          environment-file: environment.yml
+          auto-update-conda: false
+          auto-activate-base: false
+          show-channel-urls: true
+      - name: Build and upload the conda packages
+        uses: uibcdf/action-build-and-upload-conda-packages@v1.4.0
+        with:
+          meta_yaml_dir: recipes/muscle
+          user: biowindows
+          token: ${{ secrets.ANACONDA_TOKEN }}
