@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 rem URL and expected SHA256
 set "URL=https://github.com/rcedgar/muscle/releases/download/v5.3/muscle-win64.v5.3.exe"
-set "SHA256_EXPECTED=  sha256: a86637db99deb3efa1cb6762c4e3160ca33644608270eb167e4214f1f9409711"
+set "SHA256_EXPECTED=a86637db99deb3efa1cb6762c4e3160ca33644608270eb167e4214f1f9409711"
 
 rem Download the binary
 powershell -Command "Invoke-WebRequest -Uri '%URL%' -OutFile '%SRC_DIR%\muscle.exe'"
@@ -14,6 +14,8 @@ for /f "usebackq tokens=1" %%a in (`powershell -Command "Get-FileHash -Algorithm
 rem Verify hash
 if /i not "%SHA256_ACTUAL%"=="%SHA256_EXPECTED%" (
     echo SHA256 mismatch!
+    echo Expected: %SHA256_EXPECTED%
+    echo Actual: %SHA256_ACTUAL%
     exit /b 1
 )
 
