@@ -9,6 +9,9 @@ jobs:
   conda_deployment:
     name: Conda deployment
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd /C CALL
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
