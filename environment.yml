@@ -7,3 +7,5 @@ dependencies:
   - pip
   - anaconda-client
   - conda-build
+  - python-libarchive-c
+  - libarchive
