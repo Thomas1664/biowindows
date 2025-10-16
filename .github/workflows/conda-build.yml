@@ -24,6 +24,7 @@ jobs:
       - name: Test conda setup
         run: |
           conda info && conda list
+          mkdir build_output
           conda build recipes\muscle --output-folder build_output
       
       # - name: 🧪 Create build environment
