@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - main
+      - 'copilot/**'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   conda_build:
     runs-on: windows-latest
     defaults:
       run:
-        shell: cmd
+        shell: powershell
 
     steps:
       - name: 🧾 Checkout repository
@@ -22,6 +26,7 @@ jobs:
           python-version: "3.13"
           auto-update-conda: true
           auto-activate-base: true
+          activate-environment: ""
           show-channel-urls: true
 
       - name: 🧪 Create build environment
@@ -32,17 +37,17 @@ jobs:
 
       - name: 🏗️ Build Conda package
         run: |
-          echo Building muscle...
-          conda build recipes/muscle --output-folder build_output
-          echo Listing build_output contents:
-          dir build_output
+          Write-Host "Building muscle..."
+          conda build recipes/muscle --output-folder build_output --no-test
+          Write-Host "Listing build_output contents:"
+          Get-ChildItem -Recurse build_output
 
       - name: ☁️ Upload to Anaconda
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
-          echo Uploading package to Anaconda...
-          for /r build_output %%F in (*.tar.bz2) do (
-            echo Uploading %%F
-            anaconda upload --user biowindows "%%F" --label main --force
-          )
+          Write-Host "Uploading package to Anaconda..."
+          Get-ChildItem -Recurse build_output -Filter "*.tar.bz2" | ForEach-Object {
+            Write-Host "Uploading $($_.FullName)"
+            anaconda upload --user biowindows "$($_.FullName)" --label main --force
+          }

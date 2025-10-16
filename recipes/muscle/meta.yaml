@@ -2,9 +2,6 @@ package:
   name: muscle
   version: "5.3"
 
-source:
-  path: .
-
 build:
   number: 0
   script: bld.bat
@@ -12,7 +9,6 @@ build:
 about:
   home: https://drive5.com/muscle
   license: GPL-3.0-only
-  license_file: LICENSE
   summary: "Muscle is widely-used software for making multiple alignments of biological sequences."
   description: |
     Multiple sequence and structure alignment with top benchmark scores scalable to
