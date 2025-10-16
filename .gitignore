@@ -167,3 +167,4 @@ cython_debug/
 .env
 .conda
 .DS_Store
+build_output/
