@@ -22,10 +22,10 @@ jobs:
       - name: 🧰 Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
+          miniconda-version: "latest"
           auto-update-conda: true
-          show-channel-urls: true
-          activate-environment: ""
-          auto-activate-base: true
+          channels: conda-forge,defaults
+          channel-priority: flexible
 
       - name: 🧪 Create build environment
         run: |
