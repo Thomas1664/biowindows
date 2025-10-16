@@ -21,9 +21,10 @@ jobs:
           auto-activate-base: false
           show-channel-urls: true
       - name: Build and upload the conda packages
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.0.0
+        uses: uibcdf/action-build-and-upload-conda-packages@v1.4.0
         with:
           meta_yaml_dir: recipes/muscle
           user: biowindows
           token: ${{ secrets.ANACONDA_TOKEN }}
           upload: true
+          python-version: 3.13
