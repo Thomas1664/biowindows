@@ -22,7 +22,7 @@ jobs:
           activate-environment: biowindows
           environment-file: environment.yml
       - name: Test conda setup
-        run: >-
+        run: |
           conda info && conda list
           conda build recipes\muscle --output-folder build_output
       
