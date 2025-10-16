@@ -26,7 +26,7 @@ jobs:
 
       - name: 🧪 Create build environment
         run: |
-          conda install -y conda-build anaconda-client
+          conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
           conda info
           conda list
 
