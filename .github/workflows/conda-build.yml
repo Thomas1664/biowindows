@@ -15,7 +15,7 @@ jobs:
       - name: Conda environment creation and activation
         uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: 3.11
+          python-version: 3.13
           environment-file: environment.yml
           auto-update-conda: false
           auto-activate-base: false
