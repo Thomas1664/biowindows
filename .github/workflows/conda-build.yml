@@ -6,8 +6,7 @@ on:
       - main
       - 'copilot/**'
   pull_request:
-    branches:
-      - main
+    types: [opened, synchronize, reopened]
 
 jobs:
   conda_build:
@@ -23,10 +22,7 @@ jobs:
       - name: 🧰 Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: "3.13"
           auto-update-conda: true
-          auto-activate-base: true
-          activate-environment: ""
           show-channel-urls: true
 
       - name: 🧪 Create build environment
