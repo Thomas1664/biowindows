@@ -25,15 +25,33 @@ jobs:
       - name: setup base environment
         run: |
           conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
-      - name: Build Conda package
-        shell: bash -l {0}
+      - name: Build Conda package (Windows - cmd)
+        shell: cmd
         run: |
-          export CONDA_ENVS_PATH=C:\envs
-          export CONDA_PKGS_DIRS=C:\pkgs
-          conda info
-          mkdir build_output
+          REM make sure conda is initialized and base is active
+          CALL C:\Miniconda\Scripts\activate.bat base
+
+          REM set short Windows paths so Windows never hits MAX_PATH
+          set "CONDA_ENVS_PATH=C:\envs"
+          set "CONDA_PKGS_DIRS=C:\pkgs"
+          set "BUILD_CROOT=C:\bld"
+
+          REM ensure directories exist and are writable
+          if not exist C:\envs mkdir C:\envs
+          if not exist C:\pkgs mkdir C:\pkgs
+          if not exist C:\bld mkdir C:\bld
+          if not exist build_output mkdir build_output
+
+          conda install -y conda-build
+
+          REM diagnostics (helpful)
+          conda info --envs
+          conda info --json > conda_info.json
+
+          REM purge leftovers, then build
           conda build purge-all
-          conda build recipes/muscle --output-folder build_output --croot C:\bld
+          conda build recipes/muscle --croot %BUILD_CROOT% --output-folder build_output
+
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
