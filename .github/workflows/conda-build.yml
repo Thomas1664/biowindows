@@ -28,7 +28,7 @@ jobs:
           conda install anaconda-client boa conda-verify python-libarchive-c libarchive
       - name: Build Windows package
         run: |
-          conda build recipes\muscle --output-folder build_output --croot D:\a\bld  --debug --no-test
+          conda build recipes\muscle --output-folder build_output --croot C:\bld  --debug --no-test
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
