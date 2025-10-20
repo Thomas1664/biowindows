@@ -30,6 +30,7 @@ jobs:
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
+          dir /s /b /o:gn
           anaconda upload build_output\*.tar.bz2 --user biowindows --label main -p muscle -f
       # - name: 🧪 Create build environment
       #   run: |
