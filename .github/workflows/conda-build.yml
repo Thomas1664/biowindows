@@ -42,9 +42,6 @@ jobs:
           if not exist C:\bld mkdir C:\bld
           if not exist build_output mkdir build_output
 
-          conda install -y conda-build
-
-          REM diagnostics (helpful)
           conda info --envs
           conda info --json > conda_info.json
 
