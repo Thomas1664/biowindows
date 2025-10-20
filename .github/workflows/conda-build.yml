@@ -28,6 +28,8 @@ jobs:
       - name: Build Conda package
         shell: bash -l {0}
         run: |
+          export CONDA_ENVS_PATH=C:\envs
+          export CONDA_PKGS_DIRS=C:\pkgs
           conda info
           mkdir build_output
           conda build purge-all
