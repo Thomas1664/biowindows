@@ -24,7 +24,7 @@ jobs:
       - name: Build Windows package
         run: |
           conda build recipes/muscle \
-              --output-folder build_output
+              --output-folder build_output --croot /tmp/bld
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
