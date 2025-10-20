@@ -24,10 +24,10 @@ jobs:
       - name: Build Conda package
         run: |
           conda info
-          conda list
-          mkdir build_output
-          echo "building muscle"
-          conda build recipes\muscle --output-folder build_output
+          && conda list
+          && mkdir build_output
+          && echo "building muscle"
+          && conda build recipes\muscle --output-folder build_output
       - name: Upload to Anaconda
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
