@@ -7,7 +7,11 @@ on:
 
 jobs:
   conda_build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd /C call {0}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -16,15 +20,15 @@ jobs:
         uses: conda-incubator/setup-miniconda@v3
         with:
           auto-activate-base: true
-          activate-environment: ""
+          activate-environment: true
           channels: conda-forge
+          python-version: 3.11
       - name: setup base environment
         run: |
-          conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
+          conda install anaconda-client bld conda-verify python-libarchive-c libarchive
       - name: Build Windows package
         run: |
-          conda build recipes/muscle \
-              --output-folder build_output --croot /tmp/bld
+          conda build recipes\muscle --output-folder build_output --croot D:\a\bld
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
