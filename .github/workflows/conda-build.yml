@@ -24,7 +24,7 @@ jobs:
           channels: conda-forge
       - name: setup base environment
         run: |
-          conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
+          conda install anaconda-client conda-build=3.24.0 conda-verify python-libarchive-c libarchive
       - name: Build Conda package (Windows - cmd)
         shell: cmd
         run: |
