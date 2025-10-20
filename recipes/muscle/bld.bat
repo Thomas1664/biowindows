@@ -1,6 +1,8 @@
 @echo on
+echo "Hello World"
 setlocal enabledelayedexpansion
 
+echo "Hello World"
 rem Exit immediately if any command fails
 cmd /V:ON /C "set ERRLEVEL=0"
 
