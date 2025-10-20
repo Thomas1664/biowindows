@@ -43,7 +43,7 @@ jobs:
           if not exist C:\bld mkdir C:\bld
           if not exist build_output mkdir build_output
 
-          conda info --envs && conda build purge-all && conda build recipes/muscle --croot %BUILD_CROOT% --output-folder build_output
+          conda info && conda config --show-sources && conda list --show-channel-urls && conda build purge-all && conda build recipes/muscle --croot %BUILD_CROOT% --output-folder build_output
 
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
