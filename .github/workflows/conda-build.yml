@@ -22,7 +22,7 @@ jobs:
           auto-activate-base: true
           activate-environment: ""
           channels: conda-forge
-          python: 3.11
+          python-version: 3.11
       - name: setup base environment
         run: |
           conda install anaconda-client conda-build=3.24.0 conda-verify python-libarchive-c libarchive
