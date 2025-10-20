@@ -26,8 +26,15 @@ jobs:
         run: |
           conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
       - name: Build Conda package
+        shell: bash -l {0}
         run: |
-          conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
+          conda config --set envs_dirs C:\envs
+          conda config --set pkgs_dirs C:\pkgs
+          conda info
+          mkdir build_output
+          conda build recipes\muscle --output-folder build_output --croot C:\bld
+        #run: |
+        #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
