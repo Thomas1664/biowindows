@@ -8,6 +8,7 @@ source:
 build:
   number: 0
   script: bld.bat
+  noarch: generic
 
 about:
   home: https://drive5.com/muscle
