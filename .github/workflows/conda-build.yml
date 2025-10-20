@@ -33,7 +33,7 @@ jobs:
           conda info
           mkdir build_output
           conda build purge-all
-          conda build recipes\muscle --output-folder build_output --croot C:\bld
+          conda build recipes/muscle --output-folder build_output --croot C:\bld
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
