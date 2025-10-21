@@ -10,7 +10,7 @@ build:
 
 requirements:
   build:
-    - python
+    - conda
 
 about:
   home: https://drive5.com/muscle
