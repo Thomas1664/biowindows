@@ -1,4 +1,4 @@
-name: Build and upload Conda package (manual)
+name: Build and upload Conda package
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   conda_build:
-    runs-on: windows-2022
+    runs-on: windows-latest
     defaults:
       run:
         shell: cmd /C call {0}
@@ -16,14 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Miniconda
+      - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
           auto-activate-base: true
           activate-environment: true
           channels: conda-forge
           python-version: 3.11
-      - name: setup base environment
+      - name: Setup base environment
         run: |
           conda install anaconda-client conda-build=24.5.1 conda-verify python-libarchive-c libarchive
       - name: Build Windows package
@@ -31,32 +31,3 @@ jobs:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
           conda config --set anaconda_upload yes && conda build recipes\muscle --output-folder build_output --croot C:\bld --debug --user biowindows --label main
-        #run: |
-        #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
-      #- name: Upload to Anaconda
-        
-      #  run: |
-      #    dir /s /b /o:gn
-      #    anaconda upload build_output/*.tar.bz2 --user biowindows --label main -p muscle -f
-      # - name: 🧪 Create build environment
-      #   run: |
-      #     conda install -y conda-build anaconda-client conda-forge::python-libarchive-c conda-forge::libarchive
-      #     conda info
-      #     conda list
-
-      # - name: 🏗️ Build Conda package
-      #   run: |
-      #     echo Building muscle...
-      #     conda build recipes/muscle --output-folder build_output
-      #     echo Listing build_output contents:
-      #     dir build_output
-
-      # - name: ☁️ Upload to Anaconda
-      #   env:
-      #     ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
-      #   run: |
-      #     echo Uploading package to Anaconda...
-      #     for /r build_output %%F in (*.tar.bz2) do (
-      #       echo Uploading %%F
-      #       anaconda upload --user biowindows "%%F" --label main --force
-      #     )
