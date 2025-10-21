@@ -9,6 +9,10 @@ build:
   number: 0
   script: bld.bat
 
+requirements:
+  build:
+    - python
+
 about:
   home: https://drive5.com/muscle
   license: GPL-3.0-only
