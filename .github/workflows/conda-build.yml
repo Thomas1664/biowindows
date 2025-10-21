@@ -25,7 +25,7 @@ jobs:
           python-version: 3.11
       - name: setup base environment
         run: |
-          conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
+          conda install anaconda-client conda-build=24.5.1 conda-verify python-libarchive-c libarchive
       - name: Build Windows package
         run: |
           conda build recipes\muscle --output-folder build_output --croot C:\bld --debug
