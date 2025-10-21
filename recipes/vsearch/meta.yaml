@@ -1,0 +1,29 @@
+package:
+  name: vsearch
+  version: "2.30.0"
+
+source:
+  path: .
+  url: https://github.com/torognes/vsearch/releases/download/v2.30.0/vsearch-2.30.0-win-x86_64.zip
+  sha256: dc2ce52bd032068a0f728235f15ed0ed753a05c2a3a04f1e633cea6cb428539c
+
+build:
+  number: 0
+  ignore_run_exports:
+    - python
+    - conda
+    - r-base
+
+requirements:
+  run:
+    - conda-forge::bzip2
+    - conda-forge::libzlib
+about:
+  license: GPL-3.0-only OR BSD-2-clause
+  license_file: vsearch/LICENSE.txt
+  summary: "Versatile open-source tool for microbiome analysis"
+  dev_url: https://github.com/torognes/vsearch/
+
+extra:
+  recipe-maintainers:
+    - Thomas1664
