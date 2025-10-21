@@ -20,7 +20,7 @@ requirements:
     - conda-forge::libzlib
 about:
   license: GPL-3.0-only OR BSD-2-clause
-  license_file: vsearch/LICENSE.txt
+  license_file: vsearch-2.30.0-win-x86_64/LICENSE.txt
   summary: "Versatile open-source tool for microbiome analysis"
   dev_url: https://github.com/torognes/vsearch/
 

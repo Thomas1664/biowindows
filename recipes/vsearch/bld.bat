@@ -31,9 +31,9 @@ if /i not "%SHA256_ACTUAL%"=="%SHA256_EXPECTED%" (
 
 rem Copy to environment Scripts folder
 if not exist "%PREFIX%\Scripts" mkdir "%PREFIX%\Scripts"
-powershell -Command "Expand-Archive -Force '%SRC_DIR%\vsearch-2.30.0-win-x86_64.zip' '%SRC_DIR%\vsearch'"
+powershell -Command "Expand-Archive -Force '%SRC_DIR%\vsearch-2.30.0-win-x86_64.zip' '%SRC_DIR%'"
 
-copy "%SRC_DIR%\vsearch\bin\vsearch.exe" "%PREFIX%\Scripts\vsearch.exe"
+copy "%SRC_DIR%\vsearch-2.30.0-win-x86_64\bin\vsearch.exe" "%PREFIX%\Scripts\vsearch.exe"
 if %ERRORLEVEL% NEQ 0 (
     echo "Failed to copy binary to Scripts folder!"
     dir /s "%SRC_DIR%" /b /o:gn
