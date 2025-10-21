@@ -25,10 +25,10 @@ jobs:
           python-version: 3.11
       - name: setup base environment
         run: |
-          conda install anaconda-client boa conda-verify python-libarchive-c libarchive
+          conda install anaconda-client conda-build conda-verify python-libarchive-c libarchive
       - name: Build Windows package
         run: |
-          conda mambabuild recipes\muscle --output-folder build_output --croot C:\bld --debug --no-test
+          conda build recipes\muscle --output-folder build_output --croot C:\bld --debug
         #run: |
         #  conda info && conda list && mkdir build_output && conda build recipes\muscle --output-folder build_output --croot C:\Users\runneradmin\.conda\envs
       - name: Upload to Anaconda
