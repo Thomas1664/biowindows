@@ -36,6 +36,7 @@ powershell -Command "Expand-Archive -Force '%SRC_DIR%\vsearch-2.30.0-win-x86_64.
 copy "%SRC_DIR%\vsearch\bin\vsearch.exe" "%PREFIX%\Scripts\vsearch.exe"
 if %ERRORLEVEL% NEQ 0 (
     echo "Failed to copy binary to Scripts folder!"
+    dir /s "%SRC_DIR%" /b /o:gn
     exit /b 1
 )
 
