@@ -1,0 +1,29 @@
+package:
+  name: iqtree
+  version: "3.0.1"
+
+source:
+  path: .
+  url: https://github.com/iqtree/iqtree3/releases/download/v3.0.1/iqtree-3.0.1-Windows.zip
+  sha256: 16cd257d58e4677a1f50657f443f6b2490916746a23c8451ebadeaf9ac1e5d43
+
+build:
+  number: 0
+  ignore_run_exports:
+    - python
+    - conda
+    - r-base
+
+requirements:
+  run:
+    - intel-openmp
+
+about:
+  license: GPL-2.0-only
+  summary: "Efficient and versatile phylogenomic software by maximum likelihood"
+  dev_url: https://github.com/iqtree/iqtree3/
+  home: https://iqtree.github.io/
+
+extra:
+  recipe-maintainers:
+    - Thomas1664

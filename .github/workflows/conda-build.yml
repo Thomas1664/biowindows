@@ -30,4 +30,4 @@ jobs:
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
-          conda config --set anaconda_upload yes && conda build recipes\vsearch recipes\muscle --output-folder build_output --croot C:\bld --debug --user biowindows --label main
+          conda config --set anaconda_upload yes && conda build recipes\iqtree recipes\vsearch recipes\muscle --output-folder build_output --croot C:\bld --debug --user biowindows --label main
