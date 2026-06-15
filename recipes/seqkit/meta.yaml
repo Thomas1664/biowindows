@@ -1,0 +1,25 @@
+package:
+  name: seqkit
+  version: "2.13.0"
+
+source:
+  path: .
+  url: https://github.com/shenwei356/seqkit/releases/download/v2.13.0/seqkit_windows_amd64.exe.tar.gz
+  sha256: 789a11df5306ae9d8cc0ccc9a11b76b6b8f44c31e6cc3ba3e4bc13db5819b1dd
+
+build:
+  number: 0
+  ignore_run_exports:
+    - python
+    - conda
+    - r-base
+
+about:
+  license: MIT
+  summary: "A cross-platform and ultrafast toolkit for FASTA/Q file manipulation"
+  dev_url: https://github.com/shenwei356/seqkit/
+  home: https://bioinf.shenwei.me/seqkit/
+
+extra:
+  recipe-maintainers:
+    - Thomas1664
