@@ -1,0 +1,25 @@
+package:
+  name: goalign
+  version: "0.4.0"
+
+source:
+  path: .
+  url: https://github.com/evolbioinfo/goalign/releases/download/v0.4.0/goalign_v0.4.0_amd64.exe
+  sha256: 1b3a94cdc0f4fdcfcb3980bdfa933372e26ae6c1f9784d1c7256b9acad2f2d33
+
+build:
+  number: 0
+  ignore_run_exports:
+    - python
+    - conda
+    - r-base
+
+about:
+  license: MIT
+  summary: "A toolkit for handling sequence alignments"
+  dev_url: https://github.com/evolbioinfo/goalign/
+  home: https://evolbioinfo.github.io/goalign/
+
+extra:
+  recipe-maintainers:
+    - Thomas1664
