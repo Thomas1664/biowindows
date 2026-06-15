@@ -1,0 +1,25 @@
+package:
+  name: gotree
+  version: "0.5.1"
+
+source:
+  path: .
+  url: https://github.com/evolbioinfo/gotree/releases/download/v0.5.1/gotree_v0.5.1_amd64.exe
+  sha256: d33000f7cce8f489c160f8b0450aa0d4fb47fb9b8bcb6a4b4c3052cd9187f272
+
+build:
+  number: 0
+  ignore_run_exports:
+    - python
+    - conda
+    - r-base
+
+about:
+  license: MIT
+  summary: "A toolkit for handling phylogenetic trees"
+  dev_url: https://github.com/evolbioinfo/gotree/
+  home: https://evolbioinfo.github.io/gotree/
+
+extra:
+  recipe-maintainers:
+    - Thomas1664
